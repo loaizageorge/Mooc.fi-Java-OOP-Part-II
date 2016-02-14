@@ -1,0 +1,44 @@
+//G
+
+public class Smileys {
+   
+    public static void main(String[] args) {
+        // Test your method at least with the following
+        printWithSmileys("\\:D/");
+        System.out.println(" ");
+        printWithSmileys("97.");
+        System.out.println(" ");
+        printWithSmileys("Beerbottle");
+        System.out.println("");
+        printWithSmileys("Interface");
+    }
+    private static void printWithSmileys(String characterString){
+        String newCharString = addSpaces(characterString);
+        int newLength=newCharString.length();
+        
+        printSmileyRow(newLength);
+        System.out.println(newCharString);
+        printSmileyRow(newLength);                   
+    }
+    
+    private static void printSmileyRow(int smiles){
+        for(int i=0; i<smiles/2;i++){
+            System.out.print(":)");
+        }
+        System.out.println();
+        
+    }
+    
+    public static String addSpaces(String print){
+        int check = print.length()%2;
+            if(check==1){
+                print=":) "+print+"  :)";
+            }else{
+                print=":) "+print+" :)";
+            }
+            return print;
+        } 
+   
+    }
+//L
+
