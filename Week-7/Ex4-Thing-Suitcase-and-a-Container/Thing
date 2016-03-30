@@ -1,0 +1,21 @@
+public class Thing {
+    private String name;
+    private int weight;
+    
+    public Thing (String thingName, int thingWeight){
+        this.name = thingName;
+        this.weight = thingWeight;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public int getWeight(){
+        return this.weight;
+    }
+    
+    public String toString(){
+        return this.name + " ("+this.weight + " kg" +")";
+    }
+}
