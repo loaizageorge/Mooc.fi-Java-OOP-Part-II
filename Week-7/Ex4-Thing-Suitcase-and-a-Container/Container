@@ -1,0 +1,36 @@
+ * @author George
+ */
+import java.util.ArrayList;
+
+public class Container {
+    private int MAX_CONTAINER_WEIGHT;
+    private int containerWeight;
+    private ArrayList<Suitcase> suitcases;
+    
+    public Container(int weight){
+        this.MAX_CONTAINER_WEIGHT = weight;
+        suitcases = new ArrayList<Suitcase>();
+        containerWeight=0;
+    }
+    
+    public void addSuitcase(Suitcase suitcase){
+        if(suitcase.totalWeight()+containerWeight<=this.MAX_CONTAINER_WEIGHT){
+            suitcases.add(suitcase);
+            containerWeight+=suitcase.totalWeight();  
+        }
+    }
+    
+    public void printThings(){
+        for(Suitcase stuff: suitcases){
+                stuff.printThings();
+            }
+    }
+    
+    public String toString(){
+        int amountOfSuitcases=0;
+            for(Suitcase stuff: suitcases){
+                amountOfSuitcases++;
+            }
+        return amountOfSuitcases + " suitcases"+ "("+containerWeight+"kg)";    
+    }
+}
