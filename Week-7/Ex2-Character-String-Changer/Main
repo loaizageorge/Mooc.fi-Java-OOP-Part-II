@@ -1,0 +1,14 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Changer candiesAway = new Changer();
+        candiesAway.addChange(new Change('a','z'));
+        candiesAway.addChange(new Change('g','j'));
+        candiesAway.addChange(new Change('y','e'));
+        
+        System.out.println(candiesAway.change("My name is george"));
+        
+    }
+}
