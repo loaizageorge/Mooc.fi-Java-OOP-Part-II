@@ -1,0 +1,65 @@
+* @author George L
+ */
+public class Calculator {
+    private Reader read;
+    private int counter;
+    
+    public Calculator(){
+        read = new Reader();
+        counter =0;
+    }
+    
+    private void sum(){
+        System.out.println("value1: ");
+        int value1 = read.readInteger();
+        System.out.println("value2: ");
+        int value2 = read.readInteger();
+        int sum = value1+value2;
+        counter++;
+        System.out.println("Sum of the values "+ sum);
+    } 
+    
+    private void difference(){
+        System.out.println("value1: ");
+        int value1 = read.readInteger();
+        System.out.println("value2: ");
+        int value2 = read.readInteger();
+        int difference = value1-value2;
+        counter++;
+        System.out.println("Difference of the values "+ difference);
+    } 
+    
+    private void product(){
+        System.out.println("value1: ");
+        int value1 = read.readInteger();
+        System.out.println("value2: ");
+        int value2 = read.readInteger();
+        int product = value1*value2;
+        counter++;
+        System.out.println("Product of the values "+ product);
+    }
+    
+    private void statistics(){
+        System.out.println("Caluculations done "+ counter);
+    }
+    
+     public void start() {
+        while (true) {
+            System.out.print("command: ");
+            String command = read.readString();
+            if (command.equals("end")) {
+                break;
+            }
+
+            if (command.equals("sum")) {
+                sum();
+            } else if (command.equals("difference")) {
+                difference();
+            } else if (command.equals("product")) {
+                product();
+            }
+        }
+
+        statistics();
+    }
+}
