@@ -1,0 +1,17 @@
+public class Change {
+    private char fromCharacter;
+    private char toCharacter;
+    private String changedString;
+    
+    public Change(char from, char to){
+        this.fromCharacter = from;
+        this.toCharacter = to;
+        this.changedString ="";
+    }
+    public String change(String characterString){
+        this.changedString = characterString.replace(this.fromCharacter,this.toCharacter);
+        return this.changedString;
+        
+        
+    }
+}
