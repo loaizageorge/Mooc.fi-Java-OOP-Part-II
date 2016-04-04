@@ -1,0 +1,53 @@
+ *
+ * @author George
+ */
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+public class Airplane {
+       private HashMap<String,String>airplane;
+       private ArrayList<String> flights;
+        
+    public Airplane( ){
+       airplane = new HashMap<String,String>(); 
+       flights = new ArrayList<String>();
+    }
+    
+    public void addAirplane(String planeID, String planeCapacity){
+        airplane.put(planeID,planeCapacity);
+    }
+    
+    public void addFlight(String flight){
+        flights.add(flight);
+    }
+    
+    public String checkPlane(String word){
+         if(this.airplane.containsKey(word)){
+            return this.airplane.get(word);
+        }
+        return null;
+    }
+    
+     public ArrayList<String> printPlanes(){
+        ArrayList<String> list = new ArrayList<String>();
+            for(String key: airplane.keySet()){
+                list.add(key+" ("+airplane.get(key)+" ppl)");
+            }
+        return list;    
+        
+    }
+     
+    public ArrayList<String> printFlights(){
+        
+        return flights;    
+        
+    } 
+    
+    public String printPlaneInfo(String word){
+        if(this.airplane.containsKey(word)){
+            return word+ " ("+this.airplane.get(word)+" ppl)";
+        }
+        return null;
+    }
+}
