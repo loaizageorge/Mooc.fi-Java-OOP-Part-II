@@ -1,0 +1,119 @@
+ *
+ * @author George X
+ */
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.*;
+
+public class UserInterface {
+    private Scanner read;
+    private Airplane airplane;
+    
+    public UserInterface(){
+        //this.read = reader;
+        //Scanner red=reader;
+        this.read=new Scanner(System.in);
+        this.airplane = new Airplane();
+    }
+    
+    public void start(){
+        System.out.println("Airport panel");
+        System.out.println("-------------------");
+        System.out.println("");
+        
+        while(true){
+            System.out.println("Choose operation:");
+            System.out.println("[1] Add airplane");
+            System.out.println("[2] Add flight");
+            System.out.println("[x] Exit");
+            System.out.print("> ");
+            String input = read.nextLine();
+            
+            if(input.equals("x")){
+                break;
+            }else if(input.equals("1")){
+               addAirplaneInput();
+            }else if(input.equals("2")){
+                addFlightInput();
+            }else{
+                System.out.println("error");
+            }  
+        }   
+        System.out.println("");
+        System.out.println("Flight service");
+        System.out.println("------------");
+        System.out.println("");
+        
+        while(true){
+            System.out.println("Choose operation:");
+            System.out.println("[1] Print planes");
+            System.out.println("[2] Print flights");
+            System.out.println("[3] Print plane info");
+            System.out.println("[x] Quit");
+            System.out.print("> ");
+            String input = read.nextLine();
+            
+            if(input.equals("x")){
+                break;
+            }else if(input.equals("1")){
+                printPlanesUI();
+            }else if(input.equals("2")){
+                printFlightsUI();
+            }else if(input.equals("3")){
+                printPlaneInfoUI();
+                System.out.println("");
+            }else{
+                System.out.println("error");
+            }
+        }
+                System.out.println("");
+            }        
+    
+    public void addAirplaneInput(){
+        System.out.print("Give plane ID: ");
+        String ID = read.nextLine();
+        System.out.print("Give plane capacity: ");
+        String capacity = read.nextLine();
+        airplane.addAirplane(ID,capacity);
+        
+    }
+    
+    public void addFlightInput(){
+        System.out.print("Give plane ID: "); 
+        String ID = read.nextLine();
+        System.out.print("Give departure airport code: ");
+        String departure = read.nextLine();
+        System.out.print("Give destination airport code: ");
+        String destination = read.nextLine();
+        
+        String route = "("+departure+"-"+destination+")";
+        String tempCapacity ="("+airplane.checkPlane(ID)+" ppl)";
+        String tempPlane = ID +" "+tempCapacity;
+        String temp = tempPlane+" "+route;
+        airplane.addFlight(temp);
+        
+    }
+    
+    public void printPlanesUI(){
+        ArrayList<String> list = new ArrayList<String>();
+        list =airplane.printPlanes();
+        for(String planes: list){
+            System.out.println(planes);
+        }
+    }
+    
+    public void printFlightsUI(){
+        ArrayList<String> list = new ArrayList<String>();
+        list =airplane.printFlights();
+        for(String flights: list){
+            System.out.println(flights);
+        }
+    }
+    
+    public void printPlaneInfoUI(){
+        System.out.print("Give plane ID: ");
+        String search = read.nextLine();
+        System.out.println(airplane.printPlaneInfo(search));
+    }
+}
