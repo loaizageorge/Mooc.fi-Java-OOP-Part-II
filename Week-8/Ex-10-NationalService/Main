@@ -1,1 +1,25 @@
+public class Main {
+    public static void main(String[] args) {
+        CivilService civil = new CivilService();
+        MilitaryService military = new MilitaryService(300);
+        
+        System.out.println(civil.getDaysLeft());
+        System.out.println(military.getDaysLeft());
+        
+        civil.work();
+        military.work();
+        civil.work();
+        military.work();
+        civil.work();
+        military.work();
+        civil.work();
+        military.work();
+        
+        System.out.println(civil.getDaysLeft());
+        System.out.println(military.getDaysLeft());
+        
+        
+        
+    }
+}
 
