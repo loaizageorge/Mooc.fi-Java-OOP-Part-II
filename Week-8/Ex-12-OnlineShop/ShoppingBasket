@@ -11,53 +11,37 @@
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Collection;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Storehouse {
-    private Map<String,Integer> storage;
-    private Map<String,Integer>stocks;
+public class ShoppingBasket {
+    private Map<String,Purchase> basket;
     
-    public Storehouse(){
-        storage = new HashMap<String,Integer>();
-        stocks = new HashMap<String,Integer>();
+    public ShoppingBasket(){
+        basket = new HashMap<String,Purchase>();
     }
     
-    public void addProduct(String product, int price, int stock){
-        storage.put(product,price);
-        stocks.put(product, stock);
-    }
-    
-    public int price(String product){
-        if(storage.get(product)!=null){
-        return storage.get(product);
-        }else {
-            return -99;
-        }
-    }
-    
-    public int stock(String product){
-         if(stocks.get(product)!=null){
-        return stocks.get(product);
-        }else {
-            return 0;
-        }
-    }
-    
-    public boolean take(String product){
+    public void add(String product, int price){
+        Purchase temp = new Purchase(product,price);
+        basket.put(product,temp);
         
-             if(stocks.get(product)==null){
-                return false;
-            } 
-             else  if(stocks.get(product)!=0){
-                int temp= stocks.get(product)-1;
-                stocks.put(product, temp);
-                return true;
-            }
-             else {
-                return false;
-            }
     }
     
-    public Set <String> products(){
-        return storage.keySet();
+    public int price(){
+        //Collection<Purchase> purchases;
+        int total =0;
+        
+        for(Purchase values:basket){
+            total+=values.price();
+        }
+        return total;
     }
+    
+    public void print(){
+        for(Purchase values:basket){
+            System.out.println(values);
+        }
+    }
+    
 }
