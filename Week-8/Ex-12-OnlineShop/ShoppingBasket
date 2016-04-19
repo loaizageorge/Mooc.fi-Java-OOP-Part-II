@@ -1,0 +1,63 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author George
+ */
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+
+public class Storehouse {
+    private Map<String,Integer> storage;
+    private Map<String,Integer>stocks;
+    
+    public Storehouse(){
+        storage = new HashMap<String,Integer>();
+        stocks = new HashMap<String,Integer>();
+    }
+    
+    public void addProduct(String product, int price, int stock){
+        storage.put(product,price);
+        stocks.put(product, stock);
+    }
+    
+    public int price(String product){
+        if(storage.get(product)!=null){
+        return storage.get(product);
+        }else {
+            return -99;
+        }
+    }
+    
+    public int stock(String product){
+         if(stocks.get(product)!=null){
+        return stocks.get(product);
+        }else {
+            return 0;
+        }
+    }
+    
+    public boolean take(String product){
+        
+             if(stocks.get(product)==null){
+                return false;
+            } 
+             else  if(stocks.get(product)!=0){
+                int temp= stocks.get(product)-1;
+                stocks.put(product, temp);
+                return true;
+            }
+             else {
+                return false;
+            }
+    }
+    
+    public Set <String> products(){
+        return storage.keySet();
+    }
+}
